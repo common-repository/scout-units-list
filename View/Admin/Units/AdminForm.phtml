@@ -1,0 +1,40 @@
+<div class="wrap">
+    <h1>
+        <?php if ($this->unit->getId() != null): ?>
+            <?php _e('Edit unit', 'scout-units-list'); ?>
+            <a href="<?php $this->link([
+                'action' => 'admin-form',
+            ]); ?>" class="page-title-action">
+                <?php _e('Add new', 'scout-units-list'); ?>
+            </a>
+        <?php else: ?>
+            <?php _e('Add unit', 'scout-units-list'); ?>
+        <?php endif; ?>
+    </h1>
+    <?php echo $this->partial('Partial/Messages', [
+        'messages' => $this->messages,
+    ]); ?>
+    <?php $form = $this->form; $form->start([
+        'attr' => [
+            'class' => 'sul-form',
+        ],
+    ]); ?>
+        <?php $form->errors(); ?>
+        <table class="form-table">
+            <tbody>
+                <?php $form->row('type', 'Form/RowAdmin'); ?>
+                <?php $form->row('subtype', 'Form/RowAdmin'); ?>
+                <?php $form->row('parentId', 'Form/RowAdmin'); ?>
+                <?php $form->row('name', 'Form/RowAdmin'); ?>
+                <?php $form->row('nameFull', 'Form/RowAdmin'); ?>
+                <?php $form->row('hero', 'Form/RowAdmin'); ?>
+                <?php $form->row('heroFull', 'Form/RowAdmin'); ?>
+                <?php $form->row($this->orderCategoriesDefined ? 'orderId' : 'orderNo', 'Form/RowAdmin'); ?>
+            </tbody>
+        </table>
+        <?php if ($this->orderCategoriesDefined): ?>
+            <?php $form->widget('orderNo'); ?>
+        <?php endif; ?>
+        <?php $form->row('submit', 'Form/RowSubmitAdmin'); ?>
+    <?php $form->end(); ?>
+</div>

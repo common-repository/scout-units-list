@@ -1,0 +1,33 @@
+<div class="wrap">
+    <h1>
+        <?php if ($this->position->getId() != null): ?>
+            <?php _e('Edit position', 'scout-units-list'); ?>
+            <a href="<?php $this->link(['action' => 'form']); ?>" class="page-title-action">
+                <?php _e('Add position', 'scout-units-list'); ?>
+            </a>
+        <?php else: ?>
+            <?php _e('Add position', 'scout-units-list'); ?>
+        <?php endif; ?>
+    </h1>
+    <?php echo $this->partial('Partial/Messages', [
+        'messages' => $this->messages,
+    ]); ?>
+    <?php $form = $this->form; $form->start([
+        'attr' => [
+            'class' => 'sul-form',
+        ],
+    ]); ?>
+        <?php $form->errors(); ?>
+        <table class="form-table">
+            <tbody>
+                <?php $form->row('type', 'Form/RowAdmin'); ?>
+                <?php $form->row('nameMale', 'Form/RowAdmin'); ?>
+                <?php $form->row('nameFemale', 'Form/RowAdmin'); ?>
+                <?php $form->row('description', 'Form/RowAdmin'); ?>
+                <?php $form->row('responsibilities', 'Form/RowAdmin'); ?>
+                <?php $form->row('leader', 'Form/RowAdmin'); ?>
+            </tbody>
+        </table>
+        <?php $form->row('submit', 'Form/RowSubmitAdmin'); ?>
+    <?php $form->end(); ?>
+</div>

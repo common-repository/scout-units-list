@@ -1,0 +1,28 @@
+<?php if (count($this->elements) > 0): ?>
+    <ul class="sul-unit-list-items sul-unit-list-level-<?php echo $this->escape($this->level); ?>">
+        <?php foreach ($this->elements as $element): $unit = $element['current']; ?>
+            <li class="sul-unit">
+                <span class="sul-unit-info">
+                    <span class="sul-unit-name"><?php echo $this->escape($unit->getName()); ?></span>
+                    <span class="sul-unit-leader">
+                        <?php $person = $unit->getLeader(); if (isset($person)): ?>
+                            <?php $position = $person->getPosition(); $user = $person->getUser(); if (isset($position)): ?>
+                                <span class="sul-unit-leader-position">
+                                    <?php echo $this->escape($position->getNameFor($user)); ?>:
+                                </span>
+                            <?php endif; ?>
+                            <?php echo $this->partial('Partial/UserName', [
+                                'cssClass' => 'sul-unit-leader-name',
+                                'person' => $person,
+                                'user' => $user,
+                            ]); ?>
+                        <?php else: ?>
+                            <?php _e('vacancy' , 'scout-units-list'); ?>
+                        <?php endif; ?>
+                    </span>
+                </span>
+                <?php echo $element['dependents']; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif;

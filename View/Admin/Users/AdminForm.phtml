@@ -1,0 +1,60 @@
+<h2><?php _e('Scout data', 'scout-units-list'); ?></h2>
+<table class="form-table sul-user-subform">
+    <tbody>
+        <tr>
+            <th><label for="sul_publish_email"><?php _e('Publish e-mail', 'scout-units-list'); ?></label></th>
+            <td>
+                <select name="sul_publish_email" id="sul_publish_email" style="width:15em">
+                    <?php foreach ($this->publishEmails as $value => $name): ?>
+                        <option<?php echo $this->user->getPublishEmail() == $value ? ' selected' : ''; ?>
+                            value="<?php echo $this->escape($value); ?>">
+                            <?php echo $this->escape($name); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+        <?php if ($this->config->usePhotoImages()): ?>
+            <tr>
+                <th><label for="sul_photo_id"><?php _e('Photo', 'scout-units-list'); ?></label></th>
+                <td id="sul_user_photo" data-text-button="<?php _e('Use this photo', 'scout-units-list'); ?>" data-text-title="<?php _e('Select or upload user photo', 'scout-units-list'); ?>" data-text-reset="<?php _e('Remove user photo', 'scout-units-list'); ?>">
+                    <?php $photoExists = $this->user->getPhotoId() !== null; if ($photoExists): ?>
+                        <?php echo $this->user->getPhoto(); ?>
+                    <?php endif; ?>
+                    <button type="button" class="button"><?php _e('Set user photo', 'scout-units-list'); ?></button>
+                    <input type="hidden" name="sul_photo_id" id="sul_photo_id">
+                    <?php if ($photoExists): ?>
+                        <a class="button"><?php _e('Remove user photo', 'scout-units-list'); ?></a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endif; ?>
+        <tr>
+            <th><label for="sul_grade"><?php _e('Grade', 'scout-units-list'); ?></label></th>
+            <td>
+                <input type="text" name="sul_grade" id="sul_grade" class="regular-text"
+                    value="<?php echo $this->escape($this->user->getGrade()); ?>">
+            </td>
+        </tr>
+        <tr>
+            <th><label for="sul_duty"><?php _e('Duty', 'scout-units-list'); ?></label></th>
+            <td>
+                <input type="text" name="sul_duty" id="sul_duty" class="regular-text"
+                    value="<?php echo $this->escape($this->user->getDuty()); ?>">
+            </td>
+        </tr>
+        <tr>
+            <th><label for="sul_sex"><?php _e('Sex', 'scout-units-list'); ?></label></th>
+            <td>
+                <select name="sul_sex" id="sul_sex" style="width:15em">
+                    <option value=""><?php _e('Unknown sex', 'scout-units-list'); ?></option>
+                    <?php foreach ($this->sexes as $sexKey => $sexName): $selected = $this->user->getSex() == $sexKey ?>
+                        <option value="<?php echo $sexKey; ?>"<?php echo $selected ? ' selected' : ''; ?>>
+                            <?php echo $this->escape($sexName); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>

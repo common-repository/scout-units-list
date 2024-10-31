@@ -1,0 +1,60 @@
+.sul-form .autocomplete-box {
+    position: relative;
+}
+.sul-form .autocomplete-value {
+    background: #23282d;
+    border-radius: 6px;
+    color: #eee;
+    display: none;
+    left: 4px;
+    max-width: 100%;
+    padding: 2px 6px;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 4px;
+    white-space: nowrap;
+}
+.sul-form .autocomplete-box.autocomplete-filled .autocomplete-value {
+    display: inline-block;
+}
+.sul-form .autocomplete-clear {
+    cursor: pointer;
+    font-weight: bold;
+}
+.sul-list .autocomplete-value {
+    line-height: 1.5;
+}
+.sul-list .ui-sortable-handle.ui-sortable-helper {
+    background: #e7e7e7;
+}
+.sul-list .ui-sortable-placeholder {
+    height: 57px;
+}
+.sul-list .ui-sortable-placeholder td {
+    border: 3px dashed #e1e1e1;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+.sul-list .ui-sortable-placeholder td:first-child {
+    border-left-width: 3px;
+}
+.sul-list .ui-sortable-placeholder td:last-child {
+    border-right-width: 3px;
+}
+.sul-delete {
+    cursor: pointer;
+}
+
+.sul-form #sul-location-map {
+    height: 400px;
+    width: 100%;
+}
+
+.sul-form ul.errors {
+    color: #f00;
+}
+
+.sul-user-subform img {
+    display: block;
+    padding: 0 0 8px;
+}
